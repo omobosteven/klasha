@@ -1,13 +1,41 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+const theme = createMuiTheme({
+  typography: {
+    fontFamily: '"Founders Grotesk", "Roboto", sans-serif'
+  },
+  overrides: {
+    MuiCssBaseline: {
+      '@global': {
+        body: {
+          backgroundColor: '#FFFFFF',
+          color: '#2A2A2A'
+        }
+      }
+    },
+    MuiPickersDay: {
+      daySelected: {
+        backgroundColor: '#2C665D'
+      }
+    },
+    MuiTab: {
+      textColorInherit: {
+        opacity: 1
+      }
+    }
+  }
+});
+
 ReactDOM.render(
-  <React.StrictMode>
+  <ThemeProvider theme={theme}>
+    <CssBaseline />
     <App />
-  </React.StrictMode>,
+  </ThemeProvider>,
   document.getElementById('root')
 );
 

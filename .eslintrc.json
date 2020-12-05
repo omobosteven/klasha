@@ -1,0 +1,37 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "parser": "babel-eslint",
+    "extends": [
+        "plugin:react/recommended",
+        "plugin:prettier/recommended",
+        "airbnb"
+    ],
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react", "react-hooks"
+    ],
+    "rules": {
+        "react/jsx-filename-extension": "off",
+        "comma-dangle": "off",
+        "object-curly-newline": "off",
+        "arrow-body-style": "off",
+        "no-unused-vars": "warn",
+        "no-shadow": "warn",
+        "react/jsx-one-expression-per-line": "off",
+        "operator-linebreak": "off",
+        "react/jsx-props-no-spreading": "off",
+        "import/prefer-default-export": "warn",
+        "jsx-a11y/img-redundant-alt": "off",
+        "react/jsx-wrap-multilines": "off",
+        "linebreak-style": 0
+    }
+}
