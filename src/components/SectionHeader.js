@@ -6,10 +6,10 @@ import userPic from '../assets/user-pic.png';
 
 const useStyles = makeStyles({
   sectionHeaderWrapper: {
+    position: 'relative',
     display: 'flex',
-    justifyContent: 'space-between',
     alignItems: 'center',
-    marginTop: '30px'
+    marginTop: '50px'
   },
   sectionHeader: {
     '& h1': {
@@ -24,15 +24,19 @@ const useStyles = makeStyles({
   avatarGroup: {
     display: 'flex',
     alignItems: 'center',
+    marginLeft: 'auto',
+    position: 'absolute',
+    right: 0,
+    top: '-35px',
 
     '& .MuiAvatar-root': {
-      width: '50px',
-      height: '50px'
+      width: '40px',
+      height: '40px'
     },
 
     '& .MuiBadge-dot': {
-      height: '10px',
-      minWidth: '10px',
+      height: '8px',
+      minWidth: '8px',
       borderRadius: '50%'
     }
   },
@@ -52,8 +56,37 @@ const useStyles = makeStyles({
 
     '& img': {
       position: 'absolute',
-      right: '12%',
-      bottom: '14%'
+      right: '3%',
+      bottom: '4%'
+    }
+  },
+
+  '@media (min-width: 620px)': {
+    avatarGroup: {
+      position: 'static',
+
+      '& .MuiAvatar-root': {
+        width: '50px',
+        height: '50px'
+      },
+
+      '& .MuiBadge-dot': {
+        height: '10px',
+        minWidth: '10px'
+      }
+    },
+
+    userProfile: {
+      '& img': {
+        right: '12%',
+        bottom: '14%'
+      }
+    }
+  },
+
+  '@media (min-width: 884px)': {
+    sectionHeaderWrapper: {
+      marginTop: '30px'
     }
   }
 });

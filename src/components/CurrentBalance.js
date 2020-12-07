@@ -33,9 +33,10 @@ const useStyles = makeStyles({
   balanceHeader: {
     display: 'flex',
     justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
     height: '40px',
-    padding: '35px 20px',
+    padding: '10px 20px 15px',
 
     '& .MuiInputBase-root': {
       color: '#2A2A2A'
@@ -43,20 +44,24 @@ const useStyles = makeStyles({
 
     '& .MuiSelect-outlined.MuiSelect-outlined': {
       backgroundColor: '#F5F5F5',
-      padding: '5px 32px 5px 10px',
-      fontSize: '14px'
+      padding: '3px 32px 3px 10px',
+      fontSize: '12px'
     },
 
     '& .MuiOutlinedInput-notchedOutline': {
       border: 'none',
       borderRadius: '4px'
+    },
+
+    '& .MuiSvgIcon-root': {
+      fontSize: '20px'
     }
   },
 
   headerTitle: {
-    fontSize: '14px',
+    fontSize: '12px',
     fontWeight: 'normal',
-    margin: 0
+    margin: '0 0 6px 0'
   },
 
   balanceContent: {
@@ -68,13 +73,13 @@ const useStyles = makeStyles({
 
   balance: {
     margin: 0,
-    fontSize: '36px',
+    fontSize: '25px',
     fontWeight: 700
   },
 
   balanceRate: {
     margin: 0,
-    fontSize: '16px',
+    fontSize: '12px',
     color: '#A6ABB2'
   },
 
@@ -84,7 +89,7 @@ const useStyles = makeStyles({
       maxWidth: '97px',
       border: '1px solid #EBEBEB',
       boxShadow: 'none',
-      marginTop: '38px'
+      marginTop: '4px'
     },
 
     '& .MuiList-padding': {
@@ -95,6 +100,59 @@ const useStyles = makeStyles({
       borderBottom: '1px solid #EBEBEB',
       fontSize: '14px',
       fontWeight: 600
+    },
+
+    '& .MuiMenuItem-root': {
+      minHeight: '30px'
+    }
+  },
+
+  '@media (min-width: 520px)': {
+    balanceHeader: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      padding: '25px 20px',
+
+      '& .MuiSelect-outlined.MuiSelect-outlined': {
+        padding: '3px 32px 3px 10px',
+        fontSize: '12px'
+      },
+
+      '& .MuiOutlinedInput-notchedOutline': {
+        border: 'none',
+        borderRadius: '4px'
+      }
+    }
+  },
+
+  '@media (min-width: 620px)': {
+    balanceHeader: {
+      '& .MuiSelect-outlined.MuiSelect-outlined': {
+        padding: '5px 32px 5px 10px',
+        fontSize: '14px'
+      },
+
+      '& .MuiOutlinedInput-notchedOutline': {
+        border: 'none',
+        borderRadius: '4px'
+      },
+
+      '& .MuiSvgIcon-root': {
+        fontSize: '25px'
+      }
+    },
+
+    headerTitle: {
+      fontSize: '14px',
+      margin: 0
+    },
+
+    balance: {
+      fontSize: '36px'
+    },
+
+    balanceRate: {
+      fontSize: '16px'
     }
   }
 });
@@ -127,12 +185,13 @@ const CurrentBalance = () => {
               className: classes.dropDown,
               anchorOrigin: {
                 vertical: 'bottom',
-                horizontal: 'center'
+                horizontal: 'right'
               },
               transformOrigin: {
                 vertical: 'top',
-                horizontal: 'center'
-              }
+                horizontal: 'right'
+              },
+              getContentAnchorEl: null
             }}
           >
             <MenuItem value="USD">USD</MenuItem>

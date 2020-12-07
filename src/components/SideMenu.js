@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Box, Tab, Tabs } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
+import PropTypes from 'prop-types';
 import { ReactComponent as Logo } from '../assets/logo.svg';
 import { ReactComponent as DashboardIcon } from '../assets/dashboard-icon.svg';
 import { ReactComponent as BalancesIcon } from '../assets/balances-icon.svg';
@@ -14,15 +15,11 @@ import { ReactComponent as LogoutIcon } from '../assets/logout-icon.svg';
 
 const useStyles = makeStyles({
   root: {
-    backgroundColor: '#F5F8FF',
-    display: 'flex',
-    minHeight: '100vh'
+    display: 'flex'
   },
 
   tabs: {
-    backgroundColor: '#EAEAEA',
     width: '100%',
-    height: '100vh',
     color: '#A6ABB2',
     fontSize: '14px',
     paddingTop: '40px',
@@ -87,19 +84,20 @@ const useStyles = makeStyles({
   }
 });
 
-const SideMenu = () => {
+const SideMenu = ({ closeMenuOnClick }) => {
   const classes = useStyles();
   const [value, setValue] = React.useState('/');
   const history = useHistory();
 
   useEffect(() => {
-    setValue(sessionStorage.getItem('currentTabValue') || '/');
+    setValue(sessionStorage.getItem('currentTabValue') || history.location.pathname);
   }, []);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
     history.push(newValue);
     sessionStorage.setItem('currentTabValue', newValue);
+    closeMenuOnClick();
   };
 
   return (
@@ -171,6 +169,10 @@ const SideMenu = () => {
       </Tabs>
     </Box>
   );
+};
+
+SideMenu.propTypes = {
+  closeMenuOnClick: PropTypes.func.isRequired
 };
 
 export default SideMenu;

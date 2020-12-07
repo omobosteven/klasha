@@ -2,6 +2,8 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Open [https://omobosteven.github.io/klasha](https://omobosteven.github.io/klasha) to view a live version in the browser(click on the Balances tab on the side menu to see the design).
+
 ## Available Scripts
 
 In the project directory, you can run:
