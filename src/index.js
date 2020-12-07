@@ -9,6 +9,15 @@ const theme = createMuiTheme({
   typography: {
     fontFamily: '"Founders Grotesk", "Roboto", sans-serif'
   },
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 884,
+      lg: 1280,
+      xl: 1920
+    }
+  },
   overrides: {
     MuiCssBaseline: {
       '@global': {
