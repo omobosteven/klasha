@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/klasha/static/js/main.b6faf41a.chunk.js",
-    "main.js.map": "/klasha/static/js/main.b6faf41a.chunk.js.map",
+    "main.js": "/klasha/static/js/main.3266f9f5.chunk.js",
+    "main.js.map": "/klasha/static/js/main.3266f9f5.chunk.js.map",
     "runtime-main.js": "/klasha/static/js/runtime-main.184945fa.js",
     "runtime-main.js.map": "/klasha/static/js/runtime-main.184945fa.js.map",
     "static/js/2.71cf4989.chunk.js": "/klasha/static/js/2.71cf4989.chunk.js",
@@ -26,6 +26,6 @@
   "entrypoints": [
     "static/js/runtime-main.184945fa.js",
     "static/js/2.71cf4989.chunk.js",
-    "static/js/main.b6faf41a.chunk.js"
+    "static/js/main.3266f9f5.chunk.js"
   ]
 }
