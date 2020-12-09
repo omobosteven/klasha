@@ -1,34 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Box, Grid, IconButton } from '@material-ui/core';
-import MenuRoundedIcon from '@material-ui/icons/MenuRounded';
-import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
+import { Box, Grid, Backdrop, withWidth } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import Hidden from '@material-ui/core/Hidden';
-import withWidth from '@material-ui/core/withWidth';
 import clsx from 'clsx';
 import SideMenu from './SideMenu';
 
 const useStyles = makeStyles({
-  menuButton: {
-    alignSelf: 'flex-start',
-    position: 'fixed',
-    padding: '4px',
-    backgroundColor: '#3D8F83',
-    color: '#FFFFFF',
-    zIndex: 6000,
-    left: '16px',
-    top: '16px',
-
-    '&:hover': {
-      backgroundColor: '#3D8F83',
-      color: '#FFFFFF'
-    }
-  },
-
   sideMenuMobile: {
     position: 'fixed',
     zIndex: 5000
+  },
+
+  backDrop: {
+    position: 'fixed',
+    zIndex: 4999,
+
+    '& .MuiBackdrop-root ': {
+      backgroundColor: 'rgba(0, 0, 0, 0.2)',
+      zIndex: 'inherit'
+    }
   }
 });
 
@@ -65,21 +56,28 @@ const Layout = ({ width, children }) => {
             classes.sideMenu
           )}
         >
-          <SideMenu closeMenuOnClick={handleMenuButton} />
+          <SideMenu
+            closeMenuOnClick={handleMenuButton}
+            handleMenuButton={handleMenuButton}
+            hideMenu={hideMenu}
+          />
         </Grid>
-      </Hidden>
-      <Hidden only={['md', 'lg', 'xl']}>
-        <IconButton
-          className={classes.menuButton}
-          color="inherit"
-          aria-label="menu"
-          onClick={handleMenuButton}
-        >
-          {hideMenu ? <MenuRoundedIcon /> : <CloseRoundedIcon />}
-        </IconButton>
+        <Hidden smUp>
+          <Grid item xs className={classes.backDrop}>
+            <Backdrop open={!hideMenu} onClick={() => setHideMenu(true)} />
+          </Grid>
+        </Hidden>
       </Hidden>
       <Grid item xs style={{ maxHeight: '100vh', overflow: 'hidden', overflowY: 'auto' }}>
-        <Box>{children}</Box>
+        <Box>
+          {React.Children.map(children, (child) => {
+            return React.cloneElement(
+              child,
+              null,
+              React.cloneElement(child.props.children, { handleMenuButton })
+            );
+          })}
+        </Box>
       </Grid>
     </Grid>
   );

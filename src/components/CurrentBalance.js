@@ -32,11 +32,11 @@ const useStyles = makeStyles({
 
   balanceHeader: {
     display: 'flex',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     flexDirection: 'column',
     alignItems: 'flex-start',
-    height: '40px',
-    padding: '10px 20px 15px',
+    height: '65px',
+    padding: '10px 20px',
 
     '& .MuiInputBase-root': {
       color: '#2A2A2A'
@@ -60,8 +60,8 @@ const useStyles = makeStyles({
 
   headerTitle: {
     fontSize: '12px',
-    fontWeight: 'normal',
-    margin: '0 0 6px 0'
+    fontWeight: 700,
+    margin: 0
   },
 
   balanceContent: {
@@ -81,6 +81,10 @@ const useStyles = makeStyles({
     margin: 0,
     fontSize: '12px',
     color: '#A6ABB2'
+  },
+
+  currencySelect: {
+    marginTop: '5px'
   },
 
   dropDown: {
@@ -110,6 +114,7 @@ const useStyles = makeStyles({
   '@media (min-width: 520px)': {
     balanceHeader: {
       flexDirection: 'row',
+      justifyContent: 'space-between',
       alignItems: 'center',
       padding: '25px 20px',
 
@@ -144,6 +149,7 @@ const useStyles = makeStyles({
 
     headerTitle: {
       fontSize: '14px',
+      fontWeight: 'normal',
       margin: 0
     },
 
@@ -193,6 +199,7 @@ const CurrentBalance = () => {
               },
               getContentAnchorEl: null
             }}
+            className={classes.currencySelect}
           >
             <MenuItem value="USD">USD</MenuItem>
             <MenuItem value="KES">KES</MenuItem>

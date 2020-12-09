@@ -1,15 +1,29 @@
 import React from 'react';
-import { Badge, Avatar } from '@material-ui/core';
+import { Badge, Avatar, IconButton, Hidden } from '@material-ui/core';
+import MenuRoundedIcon from '@material-ui/icons/MenuRounded';
 import { makeStyles } from '@material-ui/styles';
+import PropTypes from 'prop-types';
 import { ReactComponent as NotificationIcon } from '../assets/notification-icon.svg';
 import userPic from '../assets/user-pic.png';
 
 const useStyles = makeStyles({
+  menuButton: {
+    marginRight: '15px',
+    padding: '4px',
+    backgroundColor: '#3D8F83',
+    color: '#FFFFFF',
+
+    '&:hover': {
+      backgroundColor: '#3D8F83',
+      color: '#FFFFFF'
+    }
+  },
+
   sectionHeaderWrapper: {
     position: 'relative',
     display: 'flex',
     alignItems: 'center',
-    marginTop: '50px'
+    marginTop: '20px'
   },
   sectionHeader: {
     '& h1': {
@@ -25,9 +39,6 @@ const useStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
     marginLeft: 'auto',
-    position: 'absolute',
-    right: 0,
-    top: '-35px',
 
     '& .MuiAvatar-root': {
       width: '40px',
@@ -63,8 +74,6 @@ const useStyles = makeStyles({
 
   '@media (min-width: 620px)': {
     avatarGroup: {
-      position: 'static',
-
       '& .MuiAvatar-root': {
         width: '50px',
         height: '50px'
@@ -91,13 +100,23 @@ const useStyles = makeStyles({
   }
 });
 
-const SectionHeader = () => {
+const SectionHeader = ({ handleMenuButton, title }) => {
   const classes = useStyles();
 
   return (
     <header className={classes.sectionHeaderWrapper}>
+      <Hidden only={['md', 'lg', 'xl']}>
+        <IconButton
+          className={classes.menuButton}
+          color="inherit"
+          aria-label="menu"
+          onClick={handleMenuButton}
+        >
+          <MenuRoundedIcon />
+        </IconButton>
+      </Hidden>
       <div className={classes.sectionHeader}>
-        <h1>Balances</h1>
+        <h1>{title}</h1>
         <span>Today, 19th October 2020</span>
       </div>
       <div className={classes.avatarGroup}>
@@ -112,6 +131,11 @@ const SectionHeader = () => {
       </div>
     </header>
   );
+};
+
+SectionHeader.propTypes = {
+  handleMenuButton: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired
 };
 
 export default SectionHeader;

@@ -86,17 +86,19 @@ const useStyles = makeStyles({
 
 const SideMenu = ({ closeMenuOnClick }) => {
   const classes = useStyles();
-  const [value, setValue] = React.useState('/');
+  const [value, setValue] = React.useState('/balances');
   const history = useHistory();
 
   useEffect(() => {
-    setValue(sessionStorage.getItem('currentTabValue') || history.location.pathname);
+    setValue('/balances');
+    history.push('/balances');
+    // setValue(sessionStorage.getItem('currentTabValue') || history.location.pathname);
   }, []);
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-    history.push(newValue);
-    sessionStorage.setItem('currentTabValue', newValue);
+  const handleChange = () => {
+    setValue('/balances');
+    // history.push('/balances');
+    // sessionStorage.setItem('currentTabValue', newValue);
     closeMenuOnClick();
   };
 
